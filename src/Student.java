@@ -1,10 +1,24 @@
+import java.util.Objects;
+
 /**
  * The type Student.
  */
-class Student{
+public class Student{
     private int rollNo;
     private String name;
     private int age;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student student)) return false;
+        return getRollNo() == student.getRollNo() && getAge() == student.getAge() && getName().equals(student.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRollNo(), getName(), getAge());
+    }
 
     /**
      * Gets name.
